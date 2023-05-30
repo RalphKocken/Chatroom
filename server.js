@@ -15,23 +15,23 @@ const port = process.env.PORT || 4242;
 app.use(express.static(path.resolve("public")));
 
 // Start de socket.io server op
-ioServer.on("connection", (client) => {
+ioServer.on("connection", (socket) => {
   // Log de connectie naar console
-  console.log(`user ${client.id} connected`);
+  console.log(`user ${socket.id} connected`);
 
   // Luister naar een message van een gebruiker
-  client.on("message", (message) => {
+  socket.on("message", (message) => {
     // Log het ontvangen bericht
-    console.log(`user ${client.id} sent message: ${message}`);
+    console.log(`user ${socket.id} sent message: ${message}`);
 
     // Verstuur het bericht naar alle clients
-    ioServer.emit("message", message);
+    ioServer.emit("message", { uid: socket.id, message: message });
   });
 
   // Luister naar een disconnect van een gebruiker
-  client.on("disconnect", () => {
+  socket.on("disconnect", () => {
     // Log de disconnect
-    console.log(`user ${client.id} disconnected`);
+    console.log(`user disconnected`);
   });
 });
 

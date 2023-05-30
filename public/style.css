@@ -22,7 +22,7 @@ main{
 }
 
 .current-chat{
-  width: 90%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -53,6 +53,7 @@ main{
     flex-grow: 2;
     width: 100%;
     overflow-y: scroll;
+    background-color: #f4fdf4;
 }
 
 .current-chat ul li{
@@ -81,9 +82,10 @@ main{
   background: rgb(239, 238, 238);
   box-shadow: inset 0.2rem 0.2rem 0.3rem 0 rgba(209, 205, 199, 0.5);
   border-radius: 8px;
-  border: 0;
-  opacity: 80%;
+  /* opacity: 80%; */
   outline: none;
+  padding-left: 1rem;
+  font-family: var(--main-font);
 }
 
 .current-chat form button{
@@ -103,4 +105,8 @@ main{
 
 ::-webkit-scrollbar {
   background: transparent;
+}
+
+.eigen-bericht{
+  font-size: 32px;
 }
